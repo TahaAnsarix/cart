@@ -1,16 +1,12 @@
 import React from 'react';
 
-class CartItem extends React.Component{
-    constructor(){
-        super();
-        this.actionIconLinks = {
+//class CartItem extends React.Component{
+const CartItem = (props) => {
+        const actionIconLinks = {
             increase: 'https://cdn-icons-png.flaticon.com/512/992/992651.png',
             decrease: 'https://cdn-icons-png.flaticon.com/512/992/992683.png',
             remove: 'https://cdn-icons-png.flaticon.com/512/1214/1214428.png'
         }
-
-        //this.increaseQuantity = this.increaseQuantity.bind(this);
-    }
 
     //Commenting these functions since state is no longer present in this component
     // increaseQuantity = () => {
@@ -40,11 +36,9 @@ class CartItem extends React.Component{
     //         }
     //     }));
     // }
-
-    render(){
-        const {product, onClickIncreaseQuantity, onClickDecreaseQuantity, onDeleteProduct} = this.props;
+        const {product, onClickIncreaseQuantity, onClickDecreaseQuantity, onDeleteProduct} = props;
         const {price, title, qty} = product;
-        const {increase, decrease, remove} = this.actionIconLinks;
+        const {increase, decrease, remove} = actionIconLinks;
 
         return(
             <div className='cart-item'>
@@ -79,8 +73,7 @@ class CartItem extends React.Component{
                 </div>
             </div>
         );
-    };
-};
+    }
 
 const styles = {
     image:{

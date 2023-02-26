@@ -1,4 +1,4 @@
-const Navbar = () =>{
+const Navbar = (props) =>{
     return(
         <div style={styles.nav}>
             <div style={styles.cartIconContainer}>
