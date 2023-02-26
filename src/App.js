@@ -78,6 +78,16 @@ getTotalProductCount = () => {
   return count;
 }
 
+getTotalPrice = () => {
+  const {products} = this.state;
+  let totalPrice = 0;
+
+  products.map((product) => {
+    totalPrice += product.qty * product.price;
+  })
+
+  return totalPrice;
+}
   render(){
     const {products} = this.state;
   return (
@@ -91,6 +101,7 @@ getTotalProductCount = () => {
         onClickDecreaseQuantity={this.handleDecreaseQuantity}
         onDeleteProduct={this.handleDeleteProduct}
       />
+      <div style={{padding:20, fontSize:20}}>TOTAL:{this.getTotalPrice()}</div>
     </div>
   );
   }
