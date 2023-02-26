@@ -12,36 +12,38 @@ class CartItem extends React.Component{
         //this.increaseQuantity = this.increaseQuantity.bind(this);
     }
 
-    increaseQuantity = () => {
-        console.log('this', this);
-        //set state form 1
-        // this.setState({
-        //     qty:this.state.qty + 1
-        // });
+    //Commenting these functions since state is no longer present in this component
+    // increaseQuantity = () => {
+    //     console.log('this', this);
+    //     //set state form 1
+    //     // this.setState({
+    //     //     qty:this.state.qty + 1
+    //     // });
 
-        //set state form 2 - if previous state is required then use this
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty + 1
-            }
-        });
-    }
+    //     //set state form 2 - if previous state is required then use this
+    //     this.setState((prevState) => {
+    //         return {
+    //             qty: prevState.qty + 1
+    //         }
+    //     });
+    // }
 
-    decreaseQuantity = () => {
-        const qty = this.state.qty;
+    // decreaseQuantity = () => {
+    //     const qty = this.state.qty;
 
-        if(qty <= 0)
-            return;
+    //     if(qty <= 0)
+    //         return;
              
-        this.setState((prevState => {
-            return {
-                qty: prevState.qty - 1
-            }
-        }));
-    }
+    //     this.setState((prevState => {
+    //         return {
+    //             qty: prevState.qty - 1
+    //         }
+    //     }));
+    // }
 
     render(){
-        const {price, title, qty} = this.props.product;
+        const {product, onClickIncreaseQuantity, onClickDecreaseQuantity} = this.props;
+        const {price, title, qty} = product;
         const {increase, decrease, remove} = this.actionIconLinks;
 
         return(
@@ -59,13 +61,13 @@ class CartItem extends React.Component{
                             alt='increase' 
                             className='action-icons' 
                             src={increase}
-                            onClick={this.increaseQuantity} 
+                            onClick={() => onClickIncreaseQuantity(product)} 
                         />
                         <img 
                             alt='decrease' 
                             className='action-icons' 
                             src={decrease} 
-                            onClick={this.decreaseQuantity}
+                            onClick={() => onClickDecreaseQuantity(product)}
                         />
                         <img 
                             alt='delete' 
