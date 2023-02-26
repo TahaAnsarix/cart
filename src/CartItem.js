@@ -3,12 +3,6 @@ import React from 'react';
 class CartItem extends React.Component{
     constructor(){
         super();
-        this.state = {
-            price: 999,
-            title: 'Phone',
-            qty: 1,
-            img: ''
-        }
         this.actionIconLinks = {
             increase: 'https://cdn-icons-png.flaticon.com/512/992/992651.png',
             decrease: 'https://cdn-icons-png.flaticon.com/512/992/992683.png',
@@ -47,7 +41,7 @@ class CartItem extends React.Component{
     }
 
     render(){
-        const {price, title, qty} = this.state;
+        const {price, title, qty} = this.props.product;
         const {increase, decrease, remove} = this.actionIconLinks;
 
         return(
